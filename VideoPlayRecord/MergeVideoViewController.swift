@@ -63,7 +63,20 @@ class MergeVideoViewController: UIViewController {
       let library = ALAssetsLibrary()
       if library.videoAtPathIs(compatibleWithSavedPhotosAlbum: outputURL) {
         library.writeVideoAtPath(toSavedPhotosAlbum: outputURL,
-                                                   completionBlock: nil)
+                                                   completionBlock: { (assetURL:URL!, error:NSError!) -> Void in
+                                                    var title = ""
+                                                    var message = ""
+                                                    if error != nil {
+                                                      title = "Error"
+                                                      message = "Failed to save video"
+                                                    } else {
+                                                      title = "Success"
+                                                      message = "Video saved"
+                                                    }
+                                                    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+                                                    self.present(alert, animated: true, completion: nil)
+        })
       }
     }
     

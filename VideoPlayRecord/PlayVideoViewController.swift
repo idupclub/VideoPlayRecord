@@ -28,13 +28,13 @@ class PlayVideoViewController: UIViewController {
 
   func startMediaBrowserFromViewController(_ viewController: UIViewController, usingDelegate delegate: UINavigationControllerDelegate & UIImagePickerControllerDelegate) -> Bool {
     // 1
-    if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
+    if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) == false {
       return false
     }
 
     // 2
     let mediaUI = UIImagePickerController()
-    mediaUI.sourceType = .camera
+    mediaUI.sourceType = .savedPhotosAlbum
     mediaUI.mediaTypes = [kUTTypeMovie as NSString as String]
     mediaUI.allowsEditing = true
     mediaUI.delegate = delegate
