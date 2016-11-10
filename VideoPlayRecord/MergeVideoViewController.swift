@@ -61,8 +61,9 @@ class MergeVideoViewController: UIViewController {
     if session.status == AVAssetExportSessionStatus.completed {
       let outputURL = session.outputURL
       let library = ALAssetsLibrary()
+        /*
       if library.videoAtPathIs(compatibleWithSavedPhotosAlbum: outputURL) {
-        library.writeVideoAtPath(toSavedPhotosAlbum: outputURL,
+        //library.writeVideoAtPath(toSavedPhotosAlbum: outputURL,
                                                    completionBlock: { (assetURL:URL!, error:NSError!) -> Void in
                                                     var title = ""
                                                     var message = ""
@@ -77,7 +78,9 @@ class MergeVideoViewController: UIViewController {
                                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
                                                     self.present(alert, animated: true, completion: nil)
         })
+ 
       }
+ */
     }
     
     activityMonitor.stopAnimating()
